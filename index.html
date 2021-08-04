@@ -16,10 +16,40 @@
                 <label for="lname">Last name:</label>
                 <input type="text" id="lname" name="lname">
             </div>
+            <div class="emailgender">
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email"><br><br>
+                <label for="gender">Gender:</label>
+                <select id="gender" name="gender">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </div>
+            <div class="nasterepoza">
+                <label for="date">Birth date:</label>
+                <input type="date" id="date" name="date"><br><br>
+                <label for="poza">Poza:</label>
+                <input type='file' id="poza" name="poza"/>
+                <!--<br><img id="poza" src="#">-->
+            </div>
             <div class="submit1">
                 <input type="submit" value="Submit">
             </div>
         </form>      
     </div>
+    <script>
+        window.addEventListener('load', function() {
+  document.querySelector('input[type="file"]').addEventListener('change', function() {
+      if (this.files && this.files[0]) {
+          var img = document.querySelector('img');
+          img.onload = () => {
+              URL.revokeObjectURL(img.src);  // no longer needed, free memory
+          }
+
+          img.src = URL.createObjectURL(this.files[0]); // set src to blob url
+      }
+  });
+});
+    </script>
 </body>
 </html>

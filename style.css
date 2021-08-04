@@ -20,11 +20,60 @@
 .name {
     align-items: center;
     justify-content: center;
-    
-    
+    padding: 10px;
+}
+.emailgender {
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+#gender {
+    width: 173px;  
+}
+.nasterepoza {
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    padding-right: 0;
 }
 .submit1 {
     justify-content: flex-end;
     float:right;
-    padding: 15px;
 }
+
+input[type=submit]{
+    height: 2.5em;
+    padding: 0.1em 0.5em 0.1em 0.5em;
+    font-size: 1em;
+    font-weight: bold;
+    font-family: "Open Sans";
+    text-transform: uppercase;
+    color: #696666;
+    border-radius: 2em;
+    border: 0.15em solid #3c78f9;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+  }
+  input[type="submit"]:hover {
+      color: #fff;
+      background-color: #3c78f9;
+      border-color: #3c78f9;
+      background-position: 0.75em bottom;
+      -webkit-transition: all 0.3s ease;
+      -ms-transition: all 0.3s ease;
+      transition: all 0.3s ease;
+  }
+  input[type="submit"]:focus {
+      background-position: 2em -4em;
+      -webkit-transition: all 0.3s ease;
+      -ms-transition: all 0.3s ease;
+      transition: all 0.3s ease;
+  }
+  /* Webfonts */
+  
+  @font-face {
+      font-family: 'Open Sans';
+      font-style: normal;
+      font-weight: 700;
+      src: local('Open Sans Bold'), local('OpenSans-Bold'), url(https://themes.googleusercontent.com/static/fonts/opensans/v8/k3k702ZOKiLJc3WVjuplzHhCUOGz7vYGh680lGh-uXM.woff) format('woff');
+  }
