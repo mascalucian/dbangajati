@@ -6,29 +6,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Angajati- Masca Lucian</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 </head>
 <body>
     <div class="inputdedate">
         <form action="/action_page.php" class="inputform">
             <div class="name">
-                <label for="fname">First name:</label>
+                <label for="fname">
+                    First name:
+                </label>
                 <input type="text" id="fname" name="fname"><br><br>
-                <label for="lname">Last name:</label>
+                <label for="lname">
+                    Last name:
+                </label>
                 <input type="text" id="lname" name="lname">
             </div>
             <div class="emailgender">
-                <label for="email">E-mail:</label>
+                <label for="email">
+                    E-mail:
+                </label>
                 <input type="email" id="email" name="email"><br><br>
-                <label for="gender">Gender:</label>
+                <label for="gender">
+                    Gender:
+                </label>
                 <select id="gender" name="gender">
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
+                    <option value="male">
+                        Male
+                    </option>
+                    <option value="female">
+                        Female
+                    </option>
                 </select>
             </div>
             <div class="nasterepoza">
-                <label for="date">Birth date:</label>
+                <label for="date">
+                    Birth date:
+                </label>
                 <input type="date" id="date" name="date"><br><br>
-                <label for="poza">Poza:</label>
+                <label for="poza">
+                    Poza:
+                </label>
                 <input type='file' id="poza" name="poza"/>
                 <!--<br><img id="poza" src="#">-->
             </div>
@@ -37,6 +54,38 @@
             </div>
         </form>      
     </div>
+    <div>
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">First</th>
+                  <th scope="col">Last</th>
+                  <th scope="col">Handle</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>Mark</td>
+                  <td>Otto</td>
+                  <td>@mdo</td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>Jacob</td>
+                  <td>Thornton</td>
+                  <td>@fat</td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td colspan="2">Larry the Bird</td>
+                  <td>@twitter</td>
+                </tr>
+              </tbody>
+        </table>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
     <script>
         window.addEventListener('load', function() {
   document.querySelector('input[type="file"]').addEventListener('change', function() {
