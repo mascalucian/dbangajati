@@ -13,7 +13,7 @@
 </head>
 <body>
     <div class="inputdedate">
-        <form action="proces.php" method="post" class="inputform">
+        <form id="form" method="post" class="inputform">
             <div class="name">
                 <label for="fname">
                     First name:
@@ -57,18 +57,21 @@
             </div>
         </form>      
     </div>
-    
+    <p id="log"></p> 
    
    <div class="tabel">
     <br><br>
       
     <table id="table" align = "center" border="1px"></table>
+
       
    
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
     <script src="app.js"></script>
-    </div>   
+    </div>  
+    
+   
     <script>
         window.addEventListener('load', function() {
   document.querySelector('input[type="file"]').addEventListener('change', function() {

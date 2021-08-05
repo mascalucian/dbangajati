@@ -1,20 +1,26 @@
 [
     {
-        "Book ID": "1",
-        "Book Name": "Computer Architecture",
-        "Category": "Computers",
-        "Price": "125.60"
+        "User ID": "1",
+        "First Name": "Lucian",
+        "Last Name": "Masca",
+        "E-mail": "lucianm0607@gmail.com",
+        "Gender": "Male",
+        "Birth Date": "06/07/2000"
     },
     {
-        "Book ID": "2",
-        "Book Name": "Asp.Net 4 Blue Book",
-        "Category": "Programming",
-        "Price": "56.00"
+        "User ID": "2",
+        "First Name": "Cineva",
+        "Last Name": "Necunoscut",
+        "E-mail": "anonimul112@yahoo.com",
+        "Gender": "Male",
+        "Birth Date": "06/07/2000"
     },
     {
-        "Book ID": "3",
-        "Book Name": "Popular Science",
-        "Category": "Science",
-        "Price": "210.40"
+        "User ID": "3",
+        "First Name": "Altcineva",
+        "Last Name": "Cunoscut",
+        "E-mail": "cunoscutul911@hotmail.ro",
+        "Gender": "Male",
+        "Birth Date": "06/07/2000"
     }
 ]

@@ -75,7 +75,8 @@ var el_up = document.getElementById("GFG_UP");
                     var cell = trow.insertCell(-1);
                       
                     // Inserting the cell at particular place
-                    cell.innerHTML = data[i][cols[j]];
+                    
+                 cell.innerHTML = data[i][cols[j]];
                 }
             }
               
@@ -84,3 +85,33 @@ var el_up = document.getElementById("GFG_UP");
             el.innerHTML = "";
             el.appendChild(table);
         }    
+        var count=4;
+
+
+        function logSubmit(event) {
+            log.textContent = `Form Submitted!`;
+            event.preventDefault();
+            data.push({
+                key:   "First Name",
+                value: document.querySelector('#fname').value
+            });
+            trow = table.insertRow(-1);
+                for (var j = 0; j < 6; j++) {
+                    var cell = trow.insertCell(-1);
+                    
+                    if (j==1){cell.innerHTML = document.querySelector('#fname').value;}
+                    if (j==2){cell.innerHTML = document.querySelector('#lname').value;}
+                    if (j==3){cell.innerHTML = document.querySelector('#email').value;}
+                    if (j==4){cell.innerHTML = document.querySelector('#gender').value;}
+                    if (j==5){cell.innerHTML = document.querySelector('#date').value;}
+                    
+                    
+                }
+
+
+
+          }
+          
+          const form = document.getElementById('form');
+          const log = document.getElementById('log');
+          form.addEventListener('submit', logSubmit);
