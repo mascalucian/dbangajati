@@ -89,16 +89,60 @@ var el_up = document.getElementById("GFG_UP");
 
 
         function logSubmit(event) {
-            log.textContent = `Form Submitted!`;
             event.preventDefault();
+            /*log.textContent = `Form Submitted!`;
+            
             data.push({
                 key:   "First Name",
                 value: document.querySelector('#fname').value
-            });
+            }); */
+            var cols = [];
+              
+            for (var i = 0; i < data.length; i++) {
+                for (var k in data[i]) {
+                    if (cols.indexOf(k) === -1) {
+                          
+                        // Push all keys to the array
+                        cols.push(k);
+                    }
+                }
+            }
+              
+            // Create a table element
+            var table = document.createElement("table");
+            
+              
+            // Create table row tr element of a table
+            var tr = table.insertRow(-1);
+              
+            for (var i = 0; i < cols.length; i++) {
+                  
+                // Create the table header th element
+                var theader = document.createElement("th");
+                theader.innerHTML = cols[i];
+                  
+                // Append columnName to the table row
+                tr.appendChild(theader);
+            }
+              
+            // Adding the data to the table
+            for (var i = 0; i < data.length; i++) {
+                  
+                // Create a new row
+                trow = table.insertRow(-1);
+                for (var j = 0; j < cols.length; j++) {
+                    var cell = trow.insertCell(-1);
+                      
+                    // Inserting the cell at particular place
+                    
+                 cell.innerHTML = data[i][cols[j]];
+                }
+            }
             trow = table.insertRow(-1);
                 for (var j = 0; j < 6; j++) {
                     var cell = trow.insertCell(-1);
                     
+                    if (j==0){cell.innerHTML = count;count=count+1}
                     if (j==1){cell.innerHTML = document.querySelector('#fname').value;}
                     if (j==2){cell.innerHTML = document.querySelector('#lname').value;}
                     if (j==3){cell.innerHTML = document.querySelector('#email').value;}
@@ -107,7 +151,10 @@ var el_up = document.getElementById("GFG_UP");
                     
                     
                 }
-
+            
+                var el = document.getElementById("table");
+                el.innerHTML = "";
+                el.appendChild(table);
 
 
           }
