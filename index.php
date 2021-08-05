@@ -5,6 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Angajati- Masca Lucian</title>
+    <script src=
+"https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+    </script>
     <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 </head>
@@ -54,73 +57,18 @@
             </div>
         </form>      
     </div>
-    <div>
-        <table class="table table-striped table-hover">
-            <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">First name</th>
-                  <th scope="col">Last name</th>
-                  <th scope="col">E-mail</th>
-                  <th scope="col">Gender</th>
-                  <th scope="col">Birth date</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-              </tbody>
-        </table>
-    </div>
-    <form method="post" action="gfg.php">
-  
-        <div id="form_page">
     
-            <div id="form_body">
-                <div id="head">
-                    <h1 id="heading">GFG</h1>
-                </div>
-                <br />
-                <div id="input_name" class="input">
-                    <input id="name" type="text" 
-                        Placeholder="Name" name="name" 
-                        required>
-                </div>
-                <div id="input_class" class="input">
-                    <input type="text" placeholder=
-                        "Branch" name="branch" required>
-                </div>
-                <div id="input_year" class="input">
-                    <input id="school" type="text" 
-                        name="college" 
-                        placeholder="College">
-                </div>
-    
-                <div class="id input">
-                    <input id="submit" type="submit" 
-                        name="submit" value="submit" 
-                        onclick="on_submit()">
-                </div>
-            </div>
-        </div>
-    </form>
+   
+   <div class="tabel">
+    <br><br>
+      
+    <table id="table" align = "center" border="1px"></table>
+      
+   
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
-    
+    <script src="app.js"></script>
+    </div>   
     <script>
         window.addEventListener('load', function() {
   document.querySelector('input[type="file"]').addEventListener('change', function() {
@@ -135,6 +83,7 @@
   });
 });
     </script>
+
 
 
 
