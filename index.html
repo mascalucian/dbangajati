@@ -49,7 +49,7 @@
             </div>
             <div class="form-group">
                 <label for="location">Poza</label>
-                <input type='file' id="poza" name="poza"/>
+                <input type="text" class="form-control" id="poza">
             </div>
             <button type="submit" class="btn btn-primary">Add User</button>
         </form>
@@ -72,19 +72,23 @@
     </div>
 
     <script src="script.js"></script>
-    <script>
+    <!-- <script>
         window.addEventListener('load', function() {
   document.querySelector('input[type="file"]').addEventListener('change', function() {
       if (this.files && this.files[0]) {
           var img = document.querySelector('img');
           img.onload = () => {
+              
               URL.revokeObjectURL(img.src);  // no longer needed, free memory
           }
 
           img.src = URL.createObjectURL(this.files[0]); // set src to blob url
+          
       }
   });
 });
-    </script>
+    
+        
+    </script> -->
 </body>
 </html>

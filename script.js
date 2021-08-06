@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', UI.displayUsers);
 document.querySelector('#user-form').addEventListener('submit', (e) => {
     e.preventDefault();
     const id = document.querySelector('#id').value;
-    const poza = 'img/lucian.jfif';
+    const poza = 'img/'+document.querySelector('#poza').value+'.jfif';
     const fname = document.querySelector('#fname').value;
     const lname = document.querySelector('#lname').value;
     const email = document.querySelector('#email').value;
