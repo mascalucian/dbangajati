@@ -39,6 +39,7 @@ var el_up = document.getElementById("GFG_UP");
           
         function GFG_FUN() {
             var cols = [];
+            var count=0;
               
             for (var i = 0; i < data.length; i++) {
                 for (var k in data[i]) {
@@ -66,34 +67,59 @@ var el_up = document.getElementById("GFG_UP");
                 // Append columnName to the table row
                 tr.appendChild(theader);
             }
+            var theader = document.createElement("th");
+                theader.innerHTML = "Delete User";
+                tr.appendChild(theader)
+            
+            
               
             // Adding the data to the table
             for (var i = 0; i < data.length; i++) {
                   
                 // Create a new row
                 trow = table.insertRow(-1);
-                for (var j = 0; j < cols.length; j++) {
+                for (var j = 0; j <= cols.length; j++) {
                     var cell = trow.insertCell(-1);
                       
                     // Inserting the cell at particular place
-                 if (j==1) {
-                    var img = document.createElement('img');
-                    img.src = 
-                    data[i][cols[j]];
-                img.className='imgrotund';
-                cell.appendChild(img);
-                 }
-                 else cell.innerHTML = data[i][cols[j]];
+                    if (j==1) {
+                        var img = document.createElement('img');
+                        img.src = 
+                        data[i][cols[j]];
+                        img.className='imgrotund';
+                        cell.appendChild(img);
+                    }
+                    else if (j==7) {
+                        var xbutton= document.createElement('button');
+                        xbutton.className='xbtn';
+                        xbutton.onclick= function(){delete_user(count);count++;}
+                        xbutton.innerHTML='<img class="xbutton" src="img/x.png"/>';
+                        cell.appendChild(xbutton);
+                    }
+                    else cell.innerHTML = data[i][cols[j]];
                 }
+                
             }
               
-            // Add the newely created table containing json data
+            // Add the newly created table containing json data
             var el = document.getElementById("table");
             el.innerHTML = "";
             el.appendChild(table);
         }    
-        var count=4;
+        
 
+        function delete_user(nr) {
+            if (confirm('Are you sure you want to delete '+data[nr]["First Name"]+'?')) {
+                deluser(nr)
+                console.log('User deleted.');
+              } else {
+                
+                console.log('User not deleted.');
+              }
+        }
+        function deluser(nr) {
+            console.log('no');
+        }
        
         function logSubmit(event) {
             
@@ -101,6 +127,7 @@ var el_up = document.getElementById("GFG_UP");
 
             var dictionar = {
                 "User ID": count,
+                "Profile Picture": '/img/laszlo.jfif',
                 "First Name": document.querySelector('#fname').value,
                 "Last Name": document.querySelector('#lname').value,
                 "E-mail": document.querySelector('#email').value,
@@ -108,70 +135,6 @@ var el_up = document.getElementById("GFG_UP");
                 "Birth Date": document.querySelector('#date').value
             };
             var content="new="+dictionar;
-
-           
-
-
-            var cols = [];
-              
-            for (var i = 0; i < data.length; i++) {
-                for (var k in data[i]) {
-                    if (cols.indexOf(k) === -1) {
-                          
-                        // Push all keys to the array
-                        cols.push(k);
-                    }
-                }
-            }
-              
-            // Create a table element
-            var table = document.createElement("table");
-            
-              
-            // Create table row tr element of a table
-            var tr = table.insertRow(-1);
-              
-            for (var i = 0; i < cols.length; i++) {
-                  
-                // Create the table header th element
-                var theader = document.createElement("th");
-                theader.innerHTML = cols[i];
-                  
-                // Append columnName to the table row
-                tr.appendChild(theader);
-            }
-              
-            // Adding the data to the table
-            for (var i = 0; i < data.length; i++) {
-                  
-                // Create a new row
-                trow = table.insertRow(-1);
-                for (var j = 0; j < cols.length; j++) {
-                    var cell = trow.insertCell(-1);
-                      
-                    // Inserting the cell at particular place
-                    
-                 cell.innerHTML = data[i][cols[j]];
-                }
-            }
-            trow = table.insertRow(-1);
-                for (var j = 0; j < 6; j++) {
-                    var cell = trow.insertCell(-1);
-                    
-                    if (j==0){cell.innerHTML = count;count=count+1}
-                    if (j==1){cell.innerHTML = document.querySelector('#fname').value;}
-                    if (j==2){cell.innerHTML = document.querySelector('#lname').value;}
-                    if (j==3){cell.innerHTML = document.querySelector('#email').value;}
-                    if (j==4){cell.innerHTML = document.querySelector('#gender').value;}
-                    if (j==5){cell.innerHTML = document.querySelector('#date').value;}
-                    
-                    
-                }
-            
-                var el = document.getElementById("table");
-                el.innerHTML = "";
-                el.appendChild(table);
-
 
           }
           

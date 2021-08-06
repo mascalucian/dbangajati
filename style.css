@@ -13,7 +13,17 @@
     width: 50px;
     margin: 0 auto;
 }
-
+.xbutton {
+    width: 20px;
+    border-radius: 50%;
+    display: block;
+    
+    margin: 0 auto;
+}
+.xbtn {
+    outline: none;
+    border: none;
+}
 table, th, td {
     border-collapse: collapse;
     margin: 15px 0;
@@ -22,6 +32,8 @@ table, th, td {
     min-width: 200px;
     max-width: 400px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    align-items: center;
+    justify-content: center;
   }
 table thead tr {
     background-color: #009879;
@@ -35,6 +47,8 @@ table td {
 }
 table th {
     background-color: #009879;
+    align-items: center;
+    justify-content: center;
 }
 table tbody tr {
     border-bottom: 1px solid #dddddd;
