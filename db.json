@@ -1,6 +1,7 @@
 [
     {
         "User ID": "1",
+        "Profile Picture":"img/lucian.jfif",
         "First Name": "Lucian",
         "Last Name": "Masca",
         "E-mail": "lucianm0607@gmail.com",
@@ -9,6 +10,7 @@
     },
     {
         "User ID": "2",
+        "Profile Picture":"img/dorin.jfif",
         "First Name": "Cineva",
         "Last Name": "Necunoscut",
         "E-mail": "anonimul112@yahoo.com",
@@ -17,6 +19,7 @@
     },
     {
         "User ID": "3",
+        "Profile Picture":"img/tamas.jfif",
         "First Name": "Altcineva",
         "Last Name": "Cunoscut",
         "E-mail": "cunoscutul911@hotmail.ro",

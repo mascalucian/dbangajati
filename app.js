@@ -1,5 +1,6 @@
 let tablou=document.getElementsByClassName("table table-striped table-hover");
 
+
 function loadFile(filePath) {
     var result = null;
     var xmlhttp = new XMLHttpRequest();
@@ -75,8 +76,14 @@ var el_up = document.getElementById("GFG_UP");
                     var cell = trow.insertCell(-1);
                       
                     // Inserting the cell at particular place
-                    
-                 cell.innerHTML = data[i][cols[j]];
+                 if (j==1) {
+                    var img = document.createElement('img');
+                    img.src = 
+                    data[i][cols[j]];
+                img.className='imgrotund';
+                cell.appendChild(img);
+                 }
+                 else cell.innerHTML = data[i][cols[j]];
                 }
             }
               
@@ -87,15 +94,24 @@ var el_up = document.getElementById("GFG_UP");
         }    
         var count=4;
 
-
+       
         function logSubmit(event) {
-            event.preventDefault();
-            /*log.textContent = `Form Submitted!`;
             
-            data.push({
-                key:   "First Name",
-                value: document.querySelector('#fname').value
-            }); */
+            event.preventDefault();
+
+            var dictionar = {
+                "User ID": count,
+                "First Name": document.querySelector('#fname').value,
+                "Last Name": document.querySelector('#lname').value,
+                "E-mail": document.querySelector('#email').value,
+                "Gender": document.querySelector('#gender').value,
+                "Birth Date": document.querySelector('#date').value
+            };
+            var content="new="+dictionar;
+
+           
+
+
             var cols = [];
               
             for (var i = 0; i < data.length; i++) {
