@@ -117,27 +117,27 @@ document.querySelector('#user-form').addEventListener('submit', (e) => {
     const gender = document.querySelector('#gender').value;
     const date = document.querySelector('#date').value;
 
-    // Validate
-    if(id === '' || fname === '' || lname === '' || email==='' || date===''){
-        UI.showNotification('All fields are required!', 'danger');
-    }else{
-        // Instantiate user
-        const user = new Users(id, poza, fname, lname, email, gender, date);
+ // Validate
+ if(id === '' || fname === '' || location === ''){
+    UI.showNotification('All fields are required!', 'danger');
+}else{
+    // Instantiate user
+    const user = new Users(id, poza, fname, lname, email, gender, date);
 
-        // Add user to table
-        UI.addUserToList(user);
+    // Add user to table
+    UI.addUserToList(user);
 
-        // Add user to storage
-        Store.addUser(user);
+    // Add user to storage
+    Store.addUser(user);
 
-        // Success not
-        UI.showNotification('User added', 'success');
+    // Success not
+    UI.showNotification('User added', 'success');
 
-        // Clear form fields
-        UI.clearFileds();
+    // Clear form fields
+    UI.clearFileds();
 
-        // console.log(user);
-    }
+    // console.log(user);
+}
 });
 
 // Event to remove a user
@@ -147,7 +147,7 @@ document.querySelector('#user-list').addEventListener('click', (e) => {
     UI.deleteUser(e.target);
 
     // delete user from storage
-    Store.removeUser(e.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.textContent)
+    Store.removeUser(e.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.textContent)
 
     UI.showNotification('User Removed', 'success');
 });
