@@ -10,11 +10,21 @@ class Users {
         this.date = date;
     }
 }
+filtruaplicat=0;
+var res=[];
+var nruseri=0;
 
 // UI class
 class UI {
     static displayUsers(){
-        const users = Store.getUsers();
+        
+        
+        var users = Store.getUsers();
+        nruseri=users.length;
+        if(filtruaplicat==1) {
+            users=res;
+        }
+        
 
         users.forEach((user) => UI.addUserToList(user));
     }
@@ -139,6 +149,33 @@ document.querySelector('#user-form').addEventListener('submit', (e) => {
     // console.log(user);
 }
 });
+
+//Filtrare tabel
+//in functie de gen:
+function filtraregen() {
+var data=eval(localStorage.users);
+var selected = ['Female'];
+
+res = data.filter(({
+  gender
+}) => selected.includes(gender));
+filtruaplicat=1;
+for (i=0;i<nruseri;i++){
+document.getElementById("table").deleteRow(-1);
+}
+UI.displayUsers();
+
+console.log(res)
+}
+//reset filters
+function resetfiltru() {
+    filtruaplicat=0;
+    for (i=0;i<res.length;i++){
+        document.getElementById("table").deleteRow(-1);
+        }
+    UI.displayUsers();
+}
+
 
 // Event to remove a user
 document.querySelector('#user-list').addEventListener('click', (e) => {

@@ -15,6 +15,8 @@
 
     <div class="container" style="margin-top: 100px;">
         <h1 class="text-center"><img src="img/logo.jpg"></h1>
+        <h1><button onclick="filtraregen()">filtrare</button></h1>
+        <h4><button onclick="resetfiltru()">Reset filtrare</button></h4>
         <form id="user-form">
             <div class="form-group">
                 <label for="id">id</label>
@@ -54,7 +56,7 @@
             <button type="submit" class="btn btn-primary">Add User</button>
         </form>
         <hr />
-        <table class="table">
+        <table class="table" id="table">
             <thead>
                 <tr>
                 <th scope="col">id</th>
@@ -72,23 +74,6 @@
     </div>
 
     <script src="script.js"></script>
-    <!-- <script>
-        window.addEventListener('load', function() {
-  document.querySelector('input[type="file"]').addEventListener('change', function() {
-      if (this.files && this.files[0]) {
-          var img = document.querySelector('img');
-          img.onload = () => {
-              
-              URL.revokeObjectURL(img.src);  // no longer needed, free memory
-          }
 
-          img.src = URL.createObjectURL(this.files[0]); // set src to blob url
-          
-      }
-  });
-});
-    
-        
-    </script> -->
 </body>
 </html>
