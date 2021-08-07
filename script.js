@@ -16,6 +16,7 @@ var nruseri=0;
 
 // UI class
 class UI {
+
     static displayUsers(){
         
         
@@ -24,6 +25,7 @@ class UI {
         if(filtruaplicat==1) {
             users=res;
         }
+        
         
 
         users.forEach((user) => UI.addUserToList(user));
@@ -116,6 +118,14 @@ class Store {
 // Event to display users
 document.addEventListener('DOMContentLoaded', UI.displayUsers);
 
+//event to filter on submit
+document.querySelector('#filterform').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const fgender = document.querySelector('#fgender').value;
+    filtraregen(fgender)
+
+})
+
 // Event to add a user
 document.querySelector('#user-form').addEventListener('submit', (e) => {
     e.preventDefault();
@@ -126,6 +136,7 @@ document.querySelector('#user-form').addEventListener('submit', (e) => {
     const email = document.querySelector('#email').value;
     const gender = document.querySelector('#gender').value;
     const date = document.querySelector('#date').value;
+
 
  // Validate
  if(id === '' || fname === '' || location === ''){
@@ -150,11 +161,12 @@ document.querySelector('#user-form').addEventListener('submit', (e) => {
 }
 });
 
+
 //Filtrare tabel
 //in functie de gen:
-function filtraregen() {
+function filtraregen(fgender) {
 var data=eval(localStorage.users);
-var selected = ['Female'];
+var selected = [fgender];
 
 res = data.filter(({
   gender
