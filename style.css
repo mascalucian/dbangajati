@@ -24,6 +24,13 @@
     outline: none;
     border: none;
 }
+.pad {
+    margin-top: 10px;
+}
+
+body {
+    background-image: url(https://wallpaperaccess.com/full/3050010.png);  
+}
 table, th, td {
     border-collapse: collapse;
     margin: 15px 0;
@@ -122,14 +129,14 @@ input[type=submit]{
     text-transform: uppercase;
     color: #696666;
     border-radius: 2em;
-    border: 0.15em solid #3c78f9;
+    border: 0.15em solid #009879;
     cursor: pointer;
     transition: all 0.3s ease 0s;
   }
   input[type="submit"]:hover {
       color: #fff;
-      background-color: #3c78f9;
-      border-color: #3c78f9;
+      background-color: #009879;
+      border-color: #009879;
       background-position: 0.75em bottom;
       -webkit-transition: all 0.3s ease;
       -ms-transition: all 0.3s ease;
@@ -140,6 +147,11 @@ input[type=submit]{
       -webkit-transition: all 0.3s ease;
       -ms-transition: all 0.3s ease;
       transition: all 0.3s ease;
+  }
+
+  .btn-primary{
+      background-color: #009879;
+      border-color: #009879;
   }
   /* Webfonts */
   
