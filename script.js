@@ -1,3 +1,4 @@
+
 class Users {
     constructor(id, poza, fname, lname, email, gender, date){
         this.id = id;
@@ -13,30 +14,75 @@ filtruaplicat=0;
 var res=[];
 var nruseri=0;
 
+// db.collection("users").add({
+//     first: "Ada",
+//     last: "Lovelace",
+//     born: 1815
+// })
+// .then((docRef) => {
+//     console.log("Document written with ID: ", docRef.id);
+// })
+// .catch((error) => {
+//     console.error("Error adding document: ", error);
+// });
+
+//cum sa citesti o variabila din Firestore
+// data.doc('0').get().then((doc) => {
+//     if (doc.exists) {
+//         console.log("Document data:", doc.data());
+//     } else {
+//         // doc.data() will be undefined in this case
+//         console.log("No such document!");
+//     }
+// }).catch((error) => {
+//     console.log("Error getting document:", error);
+// });
+
+//cum sa setezi date in Firestore
+// data.doc("useri").set({
+//     fname: "San Francisco", lname: "CA", email: "USA",
+//     gender: "Male", id: 860000,
+//     date: ["west_coast", "norcal"] });
+
+//citeste taote datele din colectie
+// db.collection("users").get().then((querySnapshot) => {
+//     querySnapshot.forEach((doc) => {
+//         console.log(`${doc.id} => ${doc.data()}`);
+//     });
+// });
+
+//sterge un doc
+// iuseri.doc(user.toString()).delete().then(() => {
+//     console.log("Document successfully deleted!");
+// }).catch((error) => {
+//     console.error("Error removing document: ", error);
+// });
+
 class UI {
 
     static displayUsers(){
         
+        users=[];
+        users = Store.getUsers();
+        setTimeout(() => {  nruseri=users.length;
+            console.log(nruseri);
+            if(filtruaplicat==1) {
+                users=res;
+            }
+            if(filtruaplicat==2) {
+                users=res;
+            }
+            
+    
+            users.forEach((user) => UI.addUserToList(user)); }, 1000);
         
-        var users = Store.getUsers();
-        nruseri=users.length;
-        if(filtruaplicat==1) {
-            users=res;
-        }
-        if(filtruaplicat==2) {
-            users=res;
-        }
-        
-        
-
-        users.forEach((user) => UI.addUserToList(user));
     }
 
     static addUserToList(user) {
         const list = document.querySelector('#user-list');
 
         const row = document.createElement('tr');
-
+        console.log(user.id);
         row.innerHTML = `
             <td>${user.id}</td>
             <td><img src=${user.poza} class='imgrotund'></img></td>
@@ -82,15 +128,31 @@ class UI {
 
 class Store {
     static getUsers(){
-        let users;
+        var useri=[];
         
-        if(localStorage.getItem('users') === null){
-            users = [];
-        }else{
-            users = JSON.parse(localStorage.getItem('users'));
-        }
 
-        return users;
+        //  db.collection("useri").get().then((querySnapshot) => {
+        //      querySnapshot.forEach((doc) => {
+        //          //console.log(`${doc.id} => ${doc.data()}`);
+        //          users.push(doc.data());
+        //      });
+        //  });
+        
+        // if(localStorage.getItem('users') === null){
+        //     users = [];
+        // }else{
+            // users = JSON.parse(localStorage.getItem('users'));
+        // }
+        iuseri.get().then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                // doc.data() is never undefined for query doc snapshots
+                console.log(doc.id, " => ", doc.data());
+                useri.push(doc.data());
+            });
+        });
+        
+        return useri;
+        
     }
 
     
@@ -99,23 +161,36 @@ class Store {
         const users = Store.getUsers();
 
         users.push(user);
-
-        localStorage.setItem('users', JSON.stringify(users));
+        setTimeout(() => {
+            iuseri.doc((users.length-1).toString()).set({
+            fname: user.fname, lname: user.lname, email: user.email,
+            gender: user.gender, id: user.id,
+            date: user.date, poza: 'img/'+user.fname+'.jfif' });
+        }, 1000);
+        //localStorage.setItem('users', JSON.stringify(users));
     }
 
     static removeUser(id){
         const users = Store.getUsers();
 
-        users.forEach((user, index) => {
+        // users.forEach((user, index) => {
             
-            if(user.id == id){
-                users.splice(index, 1);
+        //     if(user.id == id){
+        //         users.splice(index, 1);
                 
-            }
+        //     }
+        // });
+        setTimeout(() => {   
+            iuseri.doc(id.toString()).delete().then(() => {
+                console.log("Document successfully deleted!");
+            }).catch((error) => {
+                console.error("Error removing document: ", error);
+            }); }, 1000);
+       
             
-        });
+        
 
-        localStorage.setItem('users', JSON.stringify(users));
+        //localStorage.setItem('users', JSON.stringify(users));
     }
 }
 
@@ -141,7 +216,7 @@ document.querySelector('#filterform2').addEventListener('submit', (e) => {
 document.querySelector('#user-form').addEventListener('submit', (e) => {
     e.preventDefault();
     //const id = document.querySelector('#id').value;
-    const id = users.length+1;
+    const id = users.length;
     const poza = 'img/'+document.querySelector('#poza').value+'.jfif';
     const fname = document.querySelector('#fname').value;
     const lname = document.querySelector('#lname').value;
