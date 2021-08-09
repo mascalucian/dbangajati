@@ -55,21 +55,37 @@
             <button type="submit" class="btn btn-primary">Add User</button>
         </form>
         <hr />
-        <form id="filterform">
-            <div class="form-group">
-                <label for="fgender">Gender</label>
-                <select id="fgender" name="fgender">
-                    <option value="Male">
-                        Male
-                    </option>
-                    <option value="Female">
-                        Female
-                    </option>
-                </select>
+        <div class="filterflex">
+            <div class="filterflex">
+                <form id="filterform">
+                    <div class="form-group">
+                        <label for="fgender">Gender</label>
+                        <select id="fgender" name="fgender">
+                            <option value="Male">
+                                Male
+                            </option>
+                            <option value="Female">
+                                Female
+                            </option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary fil">Filtreaza</button>
+                </form>
+                <p><button onclick="resetfiltru()" class="btn btn-primary pad">Reset filtrare</button></p>
             </div>
-            <button type="submit" class="btn btn-primary">Filtreaza</button>
-        </form>
-        <p><button onclick="resetfiltru()" class="btn btn-primary pad">Reset filtrare</button></p>
+            <!-- filtru de data -->
+            <div class="filterflex">
+                <form id="filterform2">
+                    <div class="form-group">
+                        <label for="datai">Data inceput:</label>
+                        <input type="date" class="form-control" id="datai">
+                        <label for="datas">Data sfarsit:</label>
+                        <input type="date" class="form-control" id="datas">
+                    </div>
+                    <button type="submit" class="btn btn-primary fil">Filtreaza</button>
+                </form>
+                </div>
+        </div>
         <hr />
         <table class="table" id="table">
             <thead>

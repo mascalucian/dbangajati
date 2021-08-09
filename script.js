@@ -1,4 +1,3 @@
-// User Class
 class Users {
     constructor(id, poza, fname, lname, email, gender, date){
         this.id = id;
@@ -14,7 +13,6 @@ filtruaplicat=0;
 var res=[];
 var nruseri=0;
 
-// UI class
 class UI {
 
     static displayUsers(){
@@ -23,6 +21,9 @@ class UI {
         var users = Store.getUsers();
         nruseri=users.length;
         if(filtruaplicat==1) {
+            users=res;
+        }
+        if(filtruaplicat==2) {
             users=res;
         }
         
@@ -64,11 +65,10 @@ class UI {
         const form = document.querySelector('#user-form');
         container.insertBefore(div, form);
 
-        // remove not in 3 seconds
+        //stergere avertizare dupa 3 sec
         setTimeout(() => document.querySelector('.alert').remove(), 3000);
     }
 
-    // clear fields method
     static clearFileds(){
         document.querySelector('#id').value = '';
         document.querySelector('#poza').value = '';
@@ -80,7 +80,6 @@ class UI {
     }
 }
 
-// Store class
 class Store {
     static getUsers(){
         let users;
@@ -115,18 +114,25 @@ class Store {
     }
 }
 
-// Event to display users
+// event - arata useri in UI
 document.addEventListener('DOMContentLoaded', UI.displayUsers);
 
-//event to filter on submit
+//event - filtrare dupa gen 
 document.querySelector('#filterform').addEventListener('submit', (e) => {
     e.preventDefault();
     const fgender = document.querySelector('#fgender').value;
     filtraregen(fgender)
-
 })
 
-// Event to add a user
+//event - filtrare dupa data
+document.querySelector('#filterform2').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const datai = document.querySelector('#datai').value;
+    const datas = document.querySelector('#datas').value;
+    filtraredata(datai,datas)
+})
+
+// event - adauga un user
 document.querySelector('#user-form').addEventListener('submit', (e) => {
     e.preventDefault();
     const id = document.querySelector('#id').value;
@@ -179,6 +185,22 @@ UI.displayUsers();
 
 console.log(res)
 }
+
+//in functie de data:
+function filtraredata(datai,datas) {
+    var data=eval(localStorage.users);
+    res = data.filter(function(obj) {
+        return obj.date >= datai && obj.date<=datas;
+    });
+    filtruaplicat=2;
+    for (i=0;i<nruseri;i++){
+    document.getElementById("table").deleteRow(-1);
+    }
+    UI.displayUsers();
+    
+    console.log(res)
+    }
+
 //reset filters
 function resetfiltru() {
     filtruaplicat=0;
