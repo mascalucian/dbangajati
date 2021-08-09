@@ -252,12 +252,27 @@ var users=Store.getUsers();
 //Filtrare tabel
 //in functie de gen:
 function filtraregen(fgender) {
-var data=eval(localStorage.users);
-var selected = [fgender];
+    res=[];
+// var data=eval(localStorage.users);
 
-res = data.filter(({
-  gender
-}) => selected.includes(gender));
+// var selected = [fgender];
+
+// res = data.filter(({
+//   gender
+// }) => selected.includes(gender));
+db.collection("useri").where("gender", "==", fgender)
+    .get()
+    .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            // doc.data() is never undefined for query doc snapshots
+            console.log(doc.id, " => ", doc.data());
+            res.push(doc.data());
+        });
+    })
+    .catch((error) => {
+        console.log("Error getting documents: ", error);
+    });
+
 filtruaplicat=1;
 for (i=0;i<nruseri;i++){
 document.getElementById("table").deleteRow(-1);
