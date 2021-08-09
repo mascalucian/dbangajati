@@ -163,7 +163,10 @@ input[type=submit]{
       align-self: center;
       min-height: 100px;
   }
-  /* Webfonts */
+ p {
+    margin-top: 5px;
+    margin-left: -35px;
+ }
   
   @font-face {
       font-family: 'Open Sans';

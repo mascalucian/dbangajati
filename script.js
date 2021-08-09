@@ -66,11 +66,11 @@ class UI {
         container.insertBefore(div, form);
 
         //stergere avertizare dupa 3 sec
-        setTimeout(() => document.querySelector('.alert').remove(), 3000);
+        setTimeout(() => document.querySelector('.alert').remove(), 4000);
     }
 
     static clearFileds(){
-        document.querySelector('#id').value = '';
+        // document.querySelector('#id').value = '';
         document.querySelector('#poza').value = '';
         document.querySelector('#fname').value = '';
         document.querySelector('#lname').value = '';
@@ -93,6 +93,8 @@ class Store {
         return users;
     }
 
+    
+
     static addUser(user){
         const users = Store.getUsers();
 
@@ -105,9 +107,12 @@ class Store {
         const users = Store.getUsers();
 
         users.forEach((user, index) => {
-            if(user.id === id){
+            
+            if(user.id == id){
                 users.splice(index, 1);
+                
             }
+            
         });
 
         localStorage.setItem('users', JSON.stringify(users));
@@ -135,7 +140,8 @@ document.querySelector('#filterform2').addEventListener('submit', (e) => {
 // event - adauga un user
 document.querySelector('#user-form').addEventListener('submit', (e) => {
     e.preventDefault();
-    const id = document.querySelector('#id').value;
+    //const id = document.querySelector('#id').value;
+    const id = users.length+1;
     const poza = 'img/'+document.querySelector('#poza').value+'.jfif';
     const fname = document.querySelector('#fname').value;
     const lname = document.querySelector('#lname').value;
@@ -166,7 +172,7 @@ document.querySelector('#user-form').addEventListener('submit', (e) => {
     // console.log(user);
 }
 });
-
+var users=Store.getUsers();
 
 //Filtrare tabel
 //in functie de gen:
