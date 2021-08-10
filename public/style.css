@@ -1,0 +1,176 @@
+.tabel {
+    display: flex;
+    width: 100vw;
+    justify-content: center;
+    align-self: center;
+    outline: none;
+}
+
+.imgrotund {
+    width: 10px;
+    border-radius: 50%;
+    display: block;
+    width: 50px;
+    margin: 0 auto;
+}
+.xbutton {
+    width: 20px;
+    border-radius: 50%;
+    display: block;
+    
+    margin: 0 auto;
+}
+.xbtn {
+    outline: none;
+    border: none;
+}
+.pad {
+    margin-top: 30px;
+}
+.fil {
+    margin-top: -15px;
+}
+
+body {
+    background-image: url(https://wallpaperaccess.com/full/3050010.png);  
+}
+table, th, td {
+    border-collapse: collapse;
+    margin: 15px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 120px;
+    max-width: 350px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    align-items: center;
+    justify-content: center;
+  }
+table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+}
+table th,
+table td {
+    
+    padding: 12px 15px;
+}
+table th {
+    background-color: #009879;
+    align-items: center;
+    justify-content: center;
+}
+table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+table tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
+}
+
+
+.inputdedate {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    padding: 15px;
+    outline: auto;
+    float: left;
+    
+    margin-top: 20px;
+    width: 62%;
+}
+.inputform {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    align-self: center;
+    padding: 15px;
+    float: left;
+}
+.name {
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+.emailgender {
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+#gender {
+    width: 173px;  
+}
+.nasterepoza {
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    padding-right: 0;
+}
+.submit1 {
+    justify-content: flex-end;
+    float:right;
+}
+
+input[type=submit]{
+    height: 2.5em;
+    padding: 0.1em 0.5em 0.1em 0.5em;
+    font-size: 1em;
+    font-weight: bold;
+    font-family: "Open Sans";
+    text-transform: uppercase;
+    color: #696666;
+    border-radius: 2em;
+    border: 0.15em solid #009879;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+  }
+  input[type="submit"]:hover {
+      color: #fff;
+      background-color: #009879;
+      border-color: #009879;
+      background-position: 0.75em bottom;
+      -webkit-transition: all 0.3s ease;
+      -ms-transition: all 0.3s ease;
+      transition: all 0.3s ease;
+  }
+  input[type="submit"]:focus {
+      background-position: 2em -4em;
+      -webkit-transition: all 0.3s ease;
+      -ms-transition: all 0.3s ease;
+      transition: all 0.3s ease;
+  }
+
+  .btn-primary{
+      background-color: #009879;
+      border-color: #009879;
+  }
+  .filterflex {
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-start;
+      align-self: center;
+      min-height: 100px;
+  }
+ p {
+    margin-top: 5px;
+    margin-left: -35px;
+ }
+  
+  @font-face {
+      font-family: 'Open Sans';
+      font-style: normal;
+      font-weight: 700;
+      src: local('Open Sans Bold'), local('OpenSans-Bold'), url(https://themes.googleusercontent.com/static/fonts/opensans/v8/k3k702ZOKiLJc3WVjuplzHhCUOGz7vYGh680lGh-uXM.woff) format('woff');
+  }
