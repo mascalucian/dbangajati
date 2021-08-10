@@ -84,14 +84,14 @@ class UI {
         const row = document.createElement('tr');
         console.log(user.id);
         row.innerHTML = `
-            <td>${user.id}</td>
+            <td class='centrare'>${user.id}</td>
             <td><img src=${user.poza} class='imgrotund'></img></td>
-            <td>${user.fname}</td>
-            <td>${user.lname}</td>
-            <td>${user.email}</td>
-            <td>${user.gender}</td>
-            <td>${user.date}</td>
-            <td><a href="#" class="btn btn-danger btn-sm delete">x</a></td>
+            <td class='centrare'>${user.fname}</td>
+            <td class='centrare'>${user.lname}</td>
+            <td class='centrare'>${user.email}</td>
+            <td class='centrare'>${user.gender}</td>
+            <td class='centrare'>${user.date}</td>
+            <td class='centrare'><a href="#" class="btn btn-danger btn-sm delete">x</a></td>
         `;
 
         list.appendChild(row);

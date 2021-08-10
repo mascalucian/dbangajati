@@ -39,7 +39,7 @@ table, th, td {
     margin: 15px 0;
     font-size: 0.9em;
     font-family: sans-serif;
-    min-width: 120px;
+    min-width: 130px;
     max-width: 350px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
     align-items: center;
@@ -76,6 +76,10 @@ table tbody tr.active-row {
     color: #009879;
 }
 
+.centrare {
+    text-align: center;
+    vertical-align: center;
+}
 
 .inputdedate {
     display: flex;
