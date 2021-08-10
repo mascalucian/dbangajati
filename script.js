@@ -166,7 +166,7 @@ class Store {
             fname: user.fname, lname: user.lname, email: user.email,
             gender: user.gender, id: user.id,
             date: user.date, poza: user.poza });
-        }, 1000);
+        }, 2000);
             
         
         //localStorage.setItem('users', JSON.stringify(users));
@@ -223,16 +223,16 @@ document.querySelector('#user-form').addEventListener('submit', (e) => {
     console.log(filename);
     const poza = 'img/'+filename;
     // 'file' comes from the Blob or File API
-    storigi.child(filename).put(poza).then((snapshot) => {
+    var uploadTask = storigi.child(filename).put(poza);
+    uploadTask.then((snapshot) => {
     console.log('Uploaded a blob or file!');
     });
-    setTimeout(() => {      
+    setTimeout(() => {  
     const fname = document.querySelector('#fname').value;
     const lname = document.querySelector('#lname').value;
     const email = document.querySelector('#email').value;
     const gender = document.querySelector('#gender').value;
     const date = document.querySelector('#date').value;
-
 
         // Validate
         if(id === '' || fname === '' || location === ''){
