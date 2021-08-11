@@ -78,6 +78,8 @@ class UI {
         
     }
 
+    
+
     static addUserToList(user) {
         const list = document.querySelector('#user-list');
 
@@ -195,7 +197,6 @@ class Store {
         //localStorage.setItem('users', JSON.stringify(users));
     }
 }
-
 // event - arata useri in UI
 document.addEventListener('DOMContentLoaded', UI.displayUsers);
 
@@ -295,7 +296,7 @@ console.log(res)
 
 //in functie de data:
 function filtraredata(datai,datas) {
-    var data=eval(localStorage.users);
+    //var data=eval(localStorage.users);
     // res = data.filter(function(obj) {
     //     return obj.date >= datai && obj.date<=datas;
     // });

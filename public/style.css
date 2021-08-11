@@ -25,10 +25,14 @@
     border: none;
 }
 .pad {
-    margin-top: 30px;
+    margin-top: 31px;
+    margin-left: -80px;
 }
 .fil {
     margin-top: -15px;
+}
+.fil2 {
+    width: 200px;
 }
 
 .logoimg {
@@ -175,7 +179,28 @@ input[type=submit]{
     margin-top: 5px;
     margin-left: -35px;
  }
-  
+ /* Fields */
+.wpforms {
+    background-color: transparent; /* Remove background fill */
+    color: rgb(0, 0, 0); /* White text */
+}
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    #fff;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    #fff;
+   opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    #fff;
+   opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:    #fff;
+}
+::-ms-input-placeholder { /* Microsoft Edge */
+   color:    #fff;
+}  
   @font-face {
       font-family: 'Open Sans';
       font-style: normal;
