@@ -84,14 +84,14 @@ class UI {
         const row = document.createElement('tr');
         console.log(user.id);
         row.innerHTML = `
-            <td>${user.id}</td>
+            <td class='centrare'>${user.id}</td>
             <td><img src=${user.poza} class='imgrotund'></img></td>
-            <td>${user.fname}</td>
-            <td>${user.lname}</td>
-            <td>${user.email}</td>
-            <td>${user.gender}</td>
-            <td>${user.date}</td>
-            <td><a href="#" class="btn btn-danger btn-sm delete">x</a></td>
+            <td class='centrare'>${user.fname}</td>
+            <td class='centrare'>${user.lname}</td>
+            <td class='centrare'>${user.email}</td>
+            <td class='centrare'>${user.gender}</td>
+            <td class='centrare'>${user.date}</td>
+            <td class='centrare'><a href="#" class="btn btn-danger btn-sm delete">x</a></td>
         `;
 
         list.appendChild(row);
@@ -166,7 +166,7 @@ class Store {
             fname: user.fname, lname: user.lname, email: user.email,
             gender: user.gender, id: user.id,
             date: user.date, poza: user.poza });
-        }, 1000);
+        }, 2000);
             
         
         //localStorage.setItem('users', JSON.stringify(users));
@@ -223,16 +223,16 @@ document.querySelector('#user-form').addEventListener('submit', (e) => {
     console.log(filename);
     const poza = 'img/'+filename;
     // 'file' comes from the Blob or File API
-    storigi.child(filename).put(poza).then((snapshot) => {
+    var uploadTask = storigi.child(filename).put(poza);
+    uploadTask.then((snapshot) => {
     console.log('Uploaded a blob or file!');
     });
-    setTimeout(() => {      
+    setTimeout(() => {  
     const fname = document.querySelector('#fname').value;
     const lname = document.querySelector('#lname').value;
     const email = document.querySelector('#email').value;
     const gender = document.querySelector('#gender').value;
     const date = document.querySelector('#date').value;
-
 
         // Validate
         if(id === '' || fname === '' || location === ''){
@@ -296,9 +296,22 @@ console.log(res)
 //in functie de data:
 function filtraredata(datai,datas) {
     var data=eval(localStorage.users);
-    res = data.filter(function(obj) {
-        return obj.date >= datai && obj.date<=datas;
+    // res = data.filter(function(obj) {
+    //     return obj.date >= datai && obj.date<=datas;
+    // });
+    db.collection("useri").where("date", ">=", datai)
+    .get()
+    .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            // doc.data() is never undefined for query doc snapshots
+            console.log(doc.id, " => ", doc.data());
+            res.push(doc.data());
+        });
+    })
+    .catch((error) => {
+        console.log("Error getting documents: ", error);
     });
+
     filtruaplicat=2;
     for (i=0;i<nruseri;i++){
     document.getElementById("table").deleteRow(-1);
@@ -314,6 +327,7 @@ function resetfiltru() {
     for (i=0;i<res.length;i++){
         document.getElementById("table").deleteRow(-1);
         }
+    res=[];
     UI.displayUsers();
 }
 

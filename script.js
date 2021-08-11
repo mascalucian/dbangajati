@@ -296,9 +296,22 @@ console.log(res)
 //in functie de data:
 function filtraredata(datai,datas) {
     var data=eval(localStorage.users);
-    res = data.filter(function(obj) {
-        return obj.date >= datai && obj.date<=datas;
+    // res = data.filter(function(obj) {
+    //     return obj.date >= datai && obj.date<=datas;
+    // });
+    db.collection("useri").where("date", ">=", datai)
+    .get()
+    .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            // doc.data() is never undefined for query doc snapshots
+            console.log(doc.id, " => ", doc.data());
+            res.push(doc.data());
+        });
+    })
+    .catch((error) => {
+        console.log("Error getting documents: ", error);
     });
+
     filtruaplicat=2;
     for (i=0;i<nruseri;i++){
     document.getElementById("table").deleteRow(-1);
@@ -314,6 +327,7 @@ function resetfiltru() {
     for (i=0;i<res.length;i++){
         document.getElementById("table").deleteRow(-1);
         }
+    res=[];
     UI.displayUsers();
 }
 

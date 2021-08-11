@@ -31,6 +31,10 @@
     margin-top: -15px;
 }
 
+.logoimg {
+    max-width: 40px;
+}
+
 body {
     background-image: url(https://wallpaperaccess.com/full/3050010.png);  
 }
