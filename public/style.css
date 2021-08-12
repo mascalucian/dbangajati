@@ -57,17 +57,26 @@ table, th, td {
 table thead tr {
     background-color: #009879;
     color: #ffffff;
-    text-align: left;
+    text-align: center;
+    vertical-align: middle;
 }
 table th,
 table td {
     
     padding: 12px 15px;
+    vertical-align: middle;
 }
 table th {
     background-color: #009879;
     align-items: center;
     justify-content: center;
+    vertical-align: middle;
+}
+.table thead th {
+    vertical-align: middle;
+}
+.table td, .table th {
+    vertical-align: middle;
 }
 table tbody tr {
     border-bottom: 1px solid #dddddd;
@@ -87,7 +96,7 @@ table tbody tr.active-row {
 
 .centrare {
     text-align: center;
-    vertical-align: center;
+    vertical-align: middle;
 }
 
 .inputdedate {
@@ -216,8 +225,7 @@ input[type=submit]{
     border: none;
 }
 .thcenter {
-    text-align: center;
-    vertical-align: center;
+    text-align: center;  
 }
   @font-face {
       font-family: 'Open Sans';
