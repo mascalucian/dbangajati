@@ -45,9 +45,10 @@ body {
 table, th, td {
     border-collapse: collapse;
     margin: 15px 0;
+    margin-left: -130px;
     font-size: 0.9em;
     font-family: sans-serif;
-    min-width: 130px;
+    min-width: 160px;
     max-width: 350px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
     align-items: center;
@@ -201,6 +202,23 @@ input[type=submit]{
 ::-ms-input-placeholder { /* Microsoft Edge */
    color:    #fff;
 }  
+
+#idsort {
+    background-color: rgb(206, 206, 129);
+    border: none;
+}
+#fnamesort {
+    background-color: rgb(206, 206, 129);
+    border: none;
+}
+#datesort {
+    background-color: rgb(206, 206, 129);
+    border: none;
+}
+.thcenter {
+    text-align: center;
+    vertical-align: center;
+}
   @font-face {
       font-family: 'Open Sans';
       font-style: normal;

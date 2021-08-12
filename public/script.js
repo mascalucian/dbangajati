@@ -13,6 +13,9 @@ class Users {
 filtruaplicat=0;
 var res=[];
 var nruseri=0;
+var sortatid=0; //0=nesortat 1=sortat crescator 2=sortat descrescator
+var sortatfname=0;
+var sortatdate=0;
 
 // db.collection("users").add({
 //     first: "Ada",
@@ -69,7 +72,7 @@ class UI {
             if(filtruaplicat==1) {
                 users=res;
             }
-            if(filtruaplicat==2) {
+            else if(filtruaplicat==2) {
                 users=res;
             }
             
@@ -132,26 +135,62 @@ class Store {
     static getUsers(){
         var useri=[];
         
-
-        //  db.collection("useri").get().then((querySnapshot) => {
-        //      querySnapshot.forEach((doc) => {
-        //          //console.log(`${doc.id} => ${doc.data()}`);
-        //          users.push(doc.data());
-        //      });
-        //  });
-        
-        // if(localStorage.getItem('users') === null){
-        //     users = [];
-        // }else{
-            // users = JSON.parse(localStorage.getItem('users'));
-        // }
-        iuseri.get().then((querySnapshot) => {
-            querySnapshot.forEach((doc) => {
-                // doc.data() is never undefined for query doc snapshots
-                console.log(doc.id, " => ", doc.data());
-                useri.push(doc.data());
+        if (sortatid==1) {
+            iuseri.orderBy("id").get().then((querySnapshot) => {
+                querySnapshot.forEach((doc) => {
+                    console.log(doc.id, " => ", doc.data());
+                    useri.push(doc.data());
+                });
             });
-        });
+        }
+        else if (sortatid==2) {
+            iuseri.orderBy("id","desc").get().then((querySnapshot) => {
+                querySnapshot.forEach((doc) => {
+                    console.log(doc.id, " => ", doc.data());
+                    useri.push(doc.data());
+                });
+            });
+        }
+        else if (sortatfname==1) {
+            iuseri.orderBy("fname").get().then((querySnapshot) => {
+                querySnapshot.forEach((doc) => {
+                    console.log(doc.id, " => ", doc.data());
+                    useri.push(doc.data());
+                });
+            });
+        }
+        else if (sortatfname==2) {
+            iuseri.orderBy("fname","desc").get().then((querySnapshot) => {
+                querySnapshot.forEach((doc) => {
+                    console.log(doc.id, " => ", doc.data());
+                    useri.push(doc.data());
+                });
+            });
+        }
+        else if (sortatdate==1) {
+            iuseri.orderBy("date").get().then((querySnapshot) => {
+                querySnapshot.forEach((doc) => {
+                    console.log(doc.id, " => ", doc.data());
+                    useri.push(doc.data());
+                });
+            });
+        }
+        else if (sortatdate==2) {
+            iuseri.orderBy("date","desc").get().then((querySnapshot) => {
+                querySnapshot.forEach((doc) => {
+                    console.log(doc.id, " => ", doc.data());
+                    useri.push(doc.data());
+                });
+            });
+        }
+        else {
+            iuseri.get().then((querySnapshot) => {
+                querySnapshot.forEach((doc) => {
+                    console.log(doc.id, " => ", doc.data());
+                    useri.push(doc.data());
+                });
+            });
+        }
         
         return useri;
         
@@ -169,32 +208,17 @@ class Store {
             gender: user.gender, id: user.id,
             date: user.date, poza: user.poza });
         }, 2000);
-            
-        
-        //localStorage.setItem('users', JSON.stringify(users));
     }
 
     static removeUser(id){
         const users = Store.getUsers();
 
-        // users.forEach((user, index) => {
-            
-        //     if(user.id == id){
-        //         users.splice(index, 1);
-                
-        //     }
-        // });
         setTimeout(() => {   
             iuseri.doc(id.toString()).delete().then(() => {
                 console.log("Document successfully deleted!");
             }).catch((error) => {
                 console.error("Error removing document: ", error);
             }); }, 1000);
-       
-            
-        
-
-        //localStorage.setItem('users', JSON.stringify(users));
     }
 }
 // event - arata useri in UI
@@ -218,7 +242,6 @@ document.querySelector('#filterform2').addEventListener('submit', (e) => {
 // event - adauga un user
 document.querySelector('#user-form').addEventListener('submit', (e) => {
     e.preventDefault();
-    //const id = document.querySelector('#id').value;
     const id = users.length;
     var filename = document.querySelector('#poza').value.replace(/^.*[\\\/]/, '');
     console.log(filename);
@@ -253,53 +276,136 @@ document.querySelector('#user-form').addEventListener('submit', (e) => {
 
             // Clear form fields
             UI.clearFileds();
-            
-
-            // console.log(user);
         }
     }, 1000);
 });
 var users=Store.getUsers();
 
-//Filtrare tabel
-//in functie de gen:
+//FUNCTII DE SORTARE
+
+//Functie sortare ID:
+function sortid(){
+    if (sortatid==0){
+        document.getElementById("idsort").style.backgroundColor = "green";
+        document.getElementById("idsort").textContent="up";
+        sortatid=1;
+        for (i=0;i<nruseri;i++){
+            document.getElementById("table").deleteRow(-1);
+            }
+        UI.displayUsers();
+    }
+    else if (sortatid==1){
+        document.getElementById("idsort").style.backgroundColor = "red";
+        document.getElementById("idsort").textContent="down";
+        sortatid=2;
+        for (i=0;i<nruseri;i++){
+            document.getElementById("table").deleteRow(-1);
+            }
+        UI.displayUsers();
+    }
+    else {
+        sortatid=0;
+        document.getElementById("idsort").style.backgroundColor = "rgb(206, 206, 129)";
+        document.getElementById("idsort").textContent="sort";
+        for (i=0;i<nruseri;i++){
+            document.getElementById("table").deleteRow(-1);
+            }
+        UI.displayUsers();
+    }
+
+}
+//Functie sortare First Name:
+function sortfname(){
+    if (sortatfname==0){
+        document.getElementById("fnamesort").style.backgroundColor = "green";
+        document.getElementById("fnamesort").textContent="up";
+        sortatfname=1;
+        for (i=0;i<nruseri;i++){
+            document.getElementById("table").deleteRow(-1);
+            }
+        UI.displayUsers();
+    }
+    else if (sortatfname==1){
+        document.getElementById("fnamesort").style.backgroundColor = "red";
+        document.getElementById("fnamesort").textContent="down";
+        sortatfname=2;
+        for (i=0;i<nruseri;i++){
+            document.getElementById("table").deleteRow(-1);
+            }
+        UI.displayUsers();
+    }
+    else {
+        sortatfname=0;
+        document.getElementById("fnamesort").style.backgroundColor = "rgb(206, 206, 129)";
+        document.getElementById("fnamesort").textContent="sort";
+        for (i=0;i<nruseri;i++){
+            document.getElementById("table").deleteRow(-1);
+            }
+        UI.displayUsers();
+    }
+
+}
+
+//Functie sortare Data Nastere:
+function sortdate(){
+    if (sortatdate==0){
+        document.getElementById("datesort").style.backgroundColor = "green";
+        document.getElementById("datesort").textContent="up";
+        sortatdate=1;
+        for (i=0;i<nruseri;i++){
+            document.getElementById("table").deleteRow(-1);
+            }
+        UI.displayUsers();
+    }
+    else if (sortatdate==1){
+        document.getElementById("datesort").style.backgroundColor = "red";
+        document.getElementById("datesort").textContent="down";
+        sortatdate=2;
+        for (i=0;i<nruseri;i++){
+            document.getElementById("table").deleteRow(-1);
+            }
+        UI.displayUsers();
+    }
+    else {
+        sortatdate=0;
+        document.getElementById("datesort").style.backgroundColor = "rgb(206, 206, 129)";
+        document.getElementById("datesort").textContent="sort";
+        for (i=0;i<nruseri;i++){
+            document.getElementById("table").deleteRow(-1);
+            }
+        UI.displayUsers();
+    }
+
+}
+
+//FUNCTII DE FILTRARE
+//Functie buton filtrare dupa gen:
 function filtraregen(fgender) {
     res=[];
-// var data=eval(localStorage.users);
-
-// var selected = [fgender];
-
-// res = data.filter(({
-//   gender
-// }) => selected.includes(gender));
-db.collection("useri").where("gender", "==", fgender)
-    .get()
-    .then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-            // doc.data() is never undefined for query doc snapshots
-            console.log(doc.id, " => ", doc.data());
-            res.push(doc.data());
+    db.collection("useri").where("gender", "==", fgender)
+        .get()
+        .then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                // doc.data() is never undefined for query doc snapshots
+                console.log(doc.id, " => ", doc.data());
+                res.push(doc.data());
+            });
+        })
+        .catch((error) => {
+            console.log("Error getting documents: ", error);
         });
-    })
-    .catch((error) => {
-        console.log("Error getting documents: ", error);
-    });
 
-filtruaplicat=1;
-for (i=0;i<nruseri;i++){
-document.getElementById("table").deleteRow(-1);
-}
-UI.displayUsers();
+    filtruaplicat=1;
+    for (i=0;i<nruseri;i++){
+    document.getElementById("table").deleteRow(-1);
+    }
+    UI.displayUsers();
 
-console.log(res)
+    console.log(res)
 }
 
-//in functie de data:
+//Functie buton filtrare dupa data:
 function filtraredata(datai,datas) {
-    //var data=eval(localStorage.users);
-    // res = data.filter(function(obj) {
-    //     return obj.date >= datai && obj.date<=datas;
-    // });
     db.collection("useri").where("date", ">=", datai)
     .get()
     .then((querySnapshot) => {
@@ -320,9 +426,9 @@ function filtraredata(datai,datas) {
     UI.displayUsers();
     
     console.log(res)
-    }
+}
 
-//reset filters
+//Functie buton Resetare filtre
 function resetfiltru() {
     filtruaplicat=0;
     for (i=0;i<res.length;i++){
