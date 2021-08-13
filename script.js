@@ -239,6 +239,13 @@ document.querySelector('#filterform2').addEventListener('submit', (e) => {
     filtraredata(datai,datas)
 })
 
+//event - filtrare dupa keyword
+document.querySelector('#filterkeyword').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const keyword = document.querySelector('#keyword').value;
+    filtrarekeyword(keyword);
+})
+
 // event - adauga un user
 document.querySelector('#user-form').addEventListener('submit', (e) => {
     e.preventDefault();
@@ -425,6 +432,32 @@ function filtraredata(datai,datas) {
     }
     UI.displayUsers();
     
+    console.log(res)
+}
+
+//Functie filtrare dupa keyword:
+
+function filtrarekeyword(keyword) {
+    res=[];
+    db.collection("useri").where('fname', '>=', keyword).where('fname', '<=', keyword+ '\uf8ff')
+        .get()
+        .then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                // doc.data() is never undefined for query doc snapshots
+                console.log(doc.id, " => ", doc.data());
+                res.push(doc.data());
+            });
+        })
+        .catch((error) => {
+            console.log("Error getting documents: ", error);
+        });
+
+    filtruaplicat=1;
+    for (i=0;i<nruseri;i++){
+    document.getElementById("table").deleteRow(-1);
+    }
+    UI.displayUsers();
+
     console.log(res)
 }
 
